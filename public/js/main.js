@@ -2,7 +2,7 @@
 
 console.log('welcome to your calc app');
 
-var menu ='Add (+), Subtract (-), Multiply (*), Divide (/), Power (P), or "Q" to quit';
+var menu ='Add (+), Subtract (-), Multiply (*), Divide (/), Power (P), Factorial (F), or "Q" to quit';
 var error= 'command not recognized';
 
 while(true){
@@ -11,11 +11,6 @@ while(true){
   
   if (operator === "Q")
     break;
-/*  
-  while(operator !== 'Add' || 'add' || '+' || 'Subtract' || 'subtract' || '-' || 'Multiply' || 'multiply' || '*' || 'p' || 'Power' || 'P' || 'divide' || 'Divide' || '/'){
-    alert(error);
-}
-*/
 
   var x = prompt('enter first number:');
   var y = prompt('enter second number:');
@@ -26,23 +21,23 @@ while(true){
   y = parseFloat(y);
   var result;
 
-  if(operator === "+" || 'add' || 'Add') 
-  result = add(x,y);
-  else if(operator === "-" || 'Subtract' || 'subtract')
+  if(operator === "+" || operator === 'add' || operator === 'Add') 
+    result = add(x,y);
+  else if(operator === "-" || operator === 'Subtract' || operator === 'subtract')
    result = sub(x,y);
-  else if(operator === "*" || 'Multiply' || 'multiply')
+  else if(operator === "*" || operator === 'Multiply' || operator === 'multiply')
    result = multiply(x,y);
-  else if(operator === "P" || 'p' || 'power' || 'Power')
+  else if(operator === "P" || operator === 'p' || operator === 'power' || operator ==='Power')
     result = power(x,y);
-  else if(operator === "/" || 'divide' || 'Divide') 
+  else if(operator === "/" || operator === 'divide' || operator === 'Divide') 
   result = divide(x,y);
+  else if(operator === "F")
+    result = fact(x);
   else
-    console.log(error);
+    prompt(error);
 
   console.log(result);
-
-
-
+}
 
 function add(a,b) {
   return a + b;
@@ -60,14 +55,49 @@ function divide(a,b) {
   return a / b;
 }
 
-function power(a,b){
+function power(base, exp){
   var result = 1;
-  for(var counter = 0; counter < b; counter ++){
-    result = a *= a
-  
+  for(var i = 0; i < exp; i++)
+    result *= base; 
   return result;
   }
+
+function fact(a){
+  var result;
+  if (a === 0 || a === 1){
+    result = 1
+    return result;
+  }
+  var n = a;
+  while( a > 1){
+   n = n * (a - 1);
+   a = a - 1;
+  }
+  return n;
 }
+
+  /*
+  var i = a;
+  while(i > 1){
+   a = a * (a - 1)
+   a = a - 1;
+   i --;
+  }
+  return a;
+}
+*/
+    
+     
+    
+
+
+
+
+
+
+
+
+
 
 
 
